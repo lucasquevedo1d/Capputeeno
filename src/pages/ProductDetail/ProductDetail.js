@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AllProducts } from '../data/AllProducts'
 import { goToCart, goToHomePage, goToProductListCategory } from '../../Router/Coordinator'
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import Swal from 'sweetalert2'
 
 const ProductDetail = () => {
 
@@ -27,17 +28,21 @@ const ProductDetail = () => {
       };
 
 
-    const AddProduct = () => {
+    const AddProduct = async () => {
         const addCart = JSON.stringify(productsDetail);
         const newArray = addPropertyToObjects(addCart, "quantity", Number(quantity) )
 
         const storedArr = JSON.parse(localStorage.getItem("arr")) || [];
         storedArr.push(newArray);
       
-        localStorage.setItem("arr", JSON.stringify(storedArr));
-      
-        alert("Produto adicionado ao carrinho com sucesso!");
-        goToCart(navigate)
+       await localStorage.setItem("arr", JSON.stringify(storedArr));
+        await Swal.fire({  
+            icon: 'success',
+            title: "Produto adicionado ao carrinho com sucesso!",
+            color:"black",
+            iconColor:"green"
+          })
+      await goToCart(navigate)
       };
       
 

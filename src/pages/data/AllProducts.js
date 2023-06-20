@@ -31,6 +31,16 @@ export const AllProducts =[
               description: "Et repellendus molestias aut. Iure nulla beatae quos. Vitae aut deserunt. Accusamus incidunt non reiciendis est voluptatem aut quaerat id commodi."
             },
             {
+              id: "880c6c31-84be-489d-99f6-f0693d6ac363",
+              name: "Caneca de cerâmica rústica",
+              price_in_cents: 5812,
+              image_url: "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-06.jpg",
+              category: "mugs",
+              sales: 13,
+              created_at: "2023-05-15T18:03:19.231Z",
+              description: "Voluptatem et nisi labore itaque dicta eveniet labore. Libero voluptatem natus accusantium adipisci eius odit. Numquam ea impedit nobis consequatur ut voluptatum. Nihil adipisci omnis aut. Libero officia est dolor quia iusto minima."
+            },
+            {
               id: "ed0b3372-d67e-4c10-b9db-34c4fc99ee64",
               name: "Camiseta Broken Saints",
               price_in_cents: 7582,
@@ -49,6 +59,16 @@ export const AllProducts =[
               sales: 7,
               created_at: "2023-04-24T19:31:22.327Z",
               description: "Tenetur dolorum suscipit. Esse atque ut et sequi voluptatem sunt. Voluptas odio perferendis aut aut sunt soluta aut. Consequatur et omnis."
+            },
+            {
+              id: "880c6c31-84be-489d-99f6-f0693d6ac363",
+              name: "Caneca de cerâmica rústica",
+              price_in_cents: 5812,
+              image_url: "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-06.jpg",
+              category: "mugs",
+              sales: 13,
+              created_at: "2023-05-15T18:03:19.231Z",
+              description: "Voluptatem et nisi labore itaque dicta eveniet labore. Libero voluptatem natus accusantium adipisci eius odit. Numquam ea impedit nobis consequatur ut voluptatum. Nihil adipisci omnis aut. Libero officia est dolor quia iusto minima."
             },
             {
               id: "66ee13fd-c288-4263-8373-6c7c57c32f02",

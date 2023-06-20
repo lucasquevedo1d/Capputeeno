@@ -5,42 +5,73 @@ import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
 import { goToHomePage } from '../../Router/Coordinator'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
 const Cart = () => {
     const [item, setItem] = useState([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-
-    const localCart = JSON.parse(localStorage.getItem("arr"));
+    const localCart = JSON.parse(localStorage.getItem("arr")) || [];
     const subTotal = item.reduce((sum, item) => {
-        return sum += item[0].price_in_cents * item[0].quantity;
+      return sum += item[0].price_in_cents * item[0].quantity;
     }, 0);
-
+    
     const getLocalCart = () => {
-        const arrayObject = localCart.map((item) => (item));
-        return arrayObject;
+      const arrayObject = localCart.map((item) => (item));
+      return arrayObject;
     };
-
-    const removeItemFromArray = (itemToRemove) => {
-        const storedArr = JSON.parse(localStorage.getItem("arr")) || [];
-        // Filtra o array removendo o item desejado
-        const filteredArr = storedArr.filter((item) => item[0].id !== itemToRemove);
-
-        // Atualiza o estado removeItem com o array filtrado
-        setItem(filteredArr);
-
-        // Atualiza o localStorage com o array atualizado
-        localStorage.setItem("arr", JSON.stringify(filteredArr));
+    const removeArray = () => {
+      const cleanedArray = [];
+      localStorage.setItem("arr", JSON.stringify(cleanedArray));
+      setItem([]);
+      Swal.fire({
+        icon: 'success',
+        title: "Pedido realizado com sucesso!",
+        color:"black",
+        iconColor:"green"
+      })
+      
     };
-
+    const removeItemFromArray = (itemId) => {
+        const arr = JSON.parse(localStorage.getItem("arr")) || [];
+        
+        const itemIndex = arr.findIndex(item => item[0].id === itemId);
+        
+        if (itemIndex !== -1) {
+          arr.splice(itemIndex, 1);
+          
+          localStorage.setItem("arr", JSON.stringify(arr));
+          
+          setItem(arr);
+        }
+    }
+        
+    const getUser = JSON.parse(window.localStorage.getItem("signup")) || [];
+    
     useEffect(() => {
+      if (!getUser || !getUser.length) {
+        goToHomePage(navigate);
+      }else {
         const arrayObject = getLocalCart();
         if (arrayObject !== null) {
-            setItem(arrayObject);
+          setItem(arrayObject);
         }
+      }
     }, []);
-
+    
+    if (!getUser.length) {
+      Swal.fire({
+        icon: 'error',
+        title: "Cadastre-se ou realize o login para acessar o carrinho!",
+        color:"black",
+        iconColor:"red"
+      })
+      return null;
+    }
+   
+    
+    
 
     return (
         <Container>
@@ -64,11 +95,11 @@ const Cart = () => {
                                 }).format(subTotal / 100)}</SummaryItemPrice>
                             </SummaryItem>
                             <Hr/>
-                            <Button>Finalizar compra</Button>
+                            <Button onClick={() =>removeArray()}>Finalizar compra</Button>
                         </Summary>
                 <Bottom>
 
-                    {item.map((item) => {
+                    { item.map((item) => {
                         return (
 
 

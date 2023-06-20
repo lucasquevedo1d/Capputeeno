@@ -10,7 +10,7 @@ ${mobile({maxWidth:"390px"})}
 export const Wrapper = styled.div`
 padding: 20px;
 min-height: 400px;
-${mobile({minHeight:"200px"})}
+${mobile({minHeight:"400px"})}
 
 `
 export const Title = styled.h1`

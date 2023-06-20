@@ -32,7 +32,6 @@ const products = AllProducts.filter((item) => searchValue ? item.name.toLocaleLo
     <Container>
       
         <Navbar/>
-        {/* <Announcement/> */}
         <Right>
         <Language>PT</Language>
         <SearchContainer>
